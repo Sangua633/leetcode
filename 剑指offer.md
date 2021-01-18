@@ -1,3 +1,58 @@
+# [二叉树的镜像](https://leetcode-cn.com/problems/er-cha-shu-de-jing-xiang-lcof/)
+
+简单
+
+## 描述
+
+请完成一个函数，输入一个二叉树，该函数输出它的镜像。
+
+例如输入：
+
+     4
+   /   \
+  2     7
+ / \   / \
+1   3 6   9
+镜像输出：
+
+     4
+   /   \
+  7     2
+ / \   / \
+9   6 3   1
+
+```
+示例 1：
+
+输入：root = [4,2,7,1,3,6,9]
+输出：[4,7,2,9,6,3,1]
+```
+
+## 解法——递归
+
+很经典的递归解法
+
+### 代码
+
+时间复杂度 O(N) ： 其中 N 为二叉树的节点数量，建立二叉树镜像需要遍历树的所有节点，占用 O(N)时间。
+空间复杂度 O(N)： 最差情况下（当二叉树退化为链表），递归时系统需使用 O(N) 大小的栈空间。
+
+```java
+public TreeNode mirrorTree(TreeNode root) {
+        if(root==null){
+            return root;
+        }
+        TreeNode temp = root.left;
+        root.left = mirrorTree(root.right);
+        root.right = mirrorTree(temp);  
+        return root;  
+    }
+```
+
+
+
+
+
 # [从头到尾打印链表](https://leetcode-cn.com/problems/cong-wei-dao-tou-da-yin-lian-biao-lcof/)
 
 简单
